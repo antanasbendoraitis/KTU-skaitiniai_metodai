@@ -16,4 +16,13 @@ size = size(module_ai);
 module_ai_n = module_ai(2:1:size(2));
 max_ai = max(module_ai_n);
 grubus_ivertis = 1 + (max_ai / ai(1));
-
+negative_ai = [];
+for idx = 1:size(2)
+    if ai(idx) < 0;
+        negative_ai = [negative_ai ai(idx)];
+    end
+end
+max_negative_ai = max(negative_ai);
+max_negative_i = find(ai==max_negative_ai,1);
+k = size(2) - max_negative_i;
+Rteig = 1 + 
