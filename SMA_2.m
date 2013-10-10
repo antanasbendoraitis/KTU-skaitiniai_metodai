@@ -30,7 +30,7 @@ while 1
        xn1=xmid;
    end
    
-   delete(h); 
+   %delete(h); 
    h(1)=plot(xn, 0, 'gp'); 
    h(2) = plot(xn1, 0, 'gp');
 end
