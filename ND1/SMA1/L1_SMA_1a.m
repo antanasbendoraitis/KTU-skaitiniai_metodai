@@ -6,6 +6,8 @@ clc
 
 syms f(x)
 f(x) = x.^4 - 25 * x.^3 + 633/4 * x.^2 - 117 * x -405/4;
+fteig = x.^4 - 25 * x.^3 + 633/4 * x.^2 - 117 * x -405/4;
+fneig=expand(subs(f,x,-x));
 %f = sym('x.^4 - 25 * x.^3 + 633/4 * x.^2 - 117 * x -405/4');
 %figure(1); hold on; grid on;
 %x=-10:0.1:20;

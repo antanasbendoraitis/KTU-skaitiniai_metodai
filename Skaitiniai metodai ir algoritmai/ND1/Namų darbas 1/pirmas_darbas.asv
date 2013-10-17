@@ -1,0 +1,40 @@
+%Grafiko braizymas
+clc; close all;clear all;
+x=-6:.001:6;
+f='exp(-(x./2).^2).*sin(2*x)';
+plot(x,eval(f),'color', 'c'); 
+grid on; hold on;
+set(gca, 'FontName','Times New Roman Baltic');
+Title('Funkcijos grafikas ir ðaknys');
+n = 0;
+x = -6;
+prad = x;
+pab = prad + 0.1;
+while (prad < 6)
+        x = prad; fxpr = eval(f);
+        x = pab; fxpab = eval(f);
+        prz = sing(fxpr); pabz = sign(fxpab);
+        if  == p
+            prad = prad + 0.1
+            pab = prad + 0.1;
+        else
+            if fzero(f, prad)
+                n = n + 1;
+                saknis(n) = fzero(f, prad);
+            end;
+        end;
+    prad = prad + 0.1
+    pab = prad + 0.1;
+end;
+% saknis(1) = fzero(f, [-5 -4])
+% saknis(2) = fzero(f, [-2 -1])
+% saknis(3) = fzero(f, [-4 -3])
+% saknis(4) = fzero(f, [2 4])
+% saknis(5) = fzero(f, [4 6])
+% saknis(6) = fzero(f, [-1 1])
+% saknis(7) = fzero(f, [1 2])
+plot(saknis,0*saknis,'ko','MarkerFaceColor','r','MarkerSize',8);
+Legend('Daugianaris','Ðaknys');
+% ko: k - juodas, o - apvalus markeris.
+xlabel('x'); ylabel('f(x)');
+set(get(gca, 'YLabel'),'Rotation',0.0);
