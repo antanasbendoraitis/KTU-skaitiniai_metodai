@@ -20,9 +20,18 @@ function Gausas
     % Atvirkstinis
     x=zeros(n,nb);
     for i=n:-1:1
-        x(i,:)=(A1(i,n+1:end)-A1(i,i+1:n)*x(i+1:n,:))/A1(i,i);
+        aa = A1(i,n+1:end);
+        bb = A1(i,i+1:n);
+        cc = x(i+1:n,:);
+        dd = A1(i,i);
+        tikr = ismember([1] ,ismember([Inf, -Inf],cc));
+        if dd == 0;
+            fprintf('SISTEMA TURI BE GALO DAUG SPRENDINIU\n')
+            dd = 1;
+        end
+        x(i,:)=(aa-bb*cc)/dd;
     end
-    disp('sprendinys x='),x
-    disp('Patikrinimas:'),liekana=A*x-b
-    disp('Paklaida:'),disp(norm(liekana)/norm(x))
+        disp('Sprendinys x='),x
+        disp('Patikrinimas:'),liekana=A*x-b
+        disp('Paklaida:'),disp(norm(liekana)/norm(x))
 end

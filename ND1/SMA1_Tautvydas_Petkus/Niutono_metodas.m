@@ -3,7 +3,7 @@ function Niutono_metodas
 clc, close all
 syms f x 
 f='exp(-x.^2).*sin(x.^2).*(x+2)';
-x0=2.5; 
+x0=-1; 
 nitmax=100; 
 range=[-3,3];
 
