@@ -1,0 +1,45 @@
+%Haro bangeliu baze
+function main
+clc
+close all
+clear all
+a=0; b=1; xmin=-0.5; xmax=b+0.5; n=1000;
+xxx=xmin:(xmax-xmin)/n:xmax;
+figure(1); hold on;
+subplot(4, 1, 1); hold on; plot(xxx, Haro_bangele(xxx, 0, 0, a, b), 'b-');
+subplot(4, 1, 1); hold on;
+plot(xxx, Haro_mastelis(xxx, 1, 0, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 1, 1, a, b), 'b-');
+subplot(4, 1, 3); hold on;
+plot(xxx, Haro_mastelis(xxx, 2, 0, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 2, 1, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 2, 2, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 2, 3, a, b), 'b-');
+subplot(4, 1, 4); hold on;
+plot(xxx, Haro_mastelis(xxx, 3, 0, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 3, 1, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 3, 2, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 3, 3, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 3, 4, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 3, 5, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 3, 6, a, b), 'b-');
+plot(xxx, Haro_mastelis(xxx, 3, 7, a, b), 'b-');
+figure(2); hold on;
+return
+end
+
+function h=Haro_bangele(x, j, k, a, b)
+eps=1e-9;
+xtld=(x-a) ./ (b-a);
+xx=2^j*xtld-k;
+h=2^(j/2)*(sign(xx-eps)-2*sign(xx-0.5)+sign(xx-1-eps))/(2*(b-a));
+return
+end
+
+function h=Haro_mastelis(x, j, k, a, b)
+eps=1e-9;
+xtld=(x-a) ./ (b-a);
+xx=2^j*xtld-k;
+h=2^(j/2)*(sign(xx-eps)-sign(xx-1-eps))/(2*(b-a));
+return
+end

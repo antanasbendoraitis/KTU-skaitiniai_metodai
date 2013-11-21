@@ -1,0 +1,34 @@
+%kazkokia aproksimacija
+function main
+clc
+close all
+clear all
+n=1000; n=round(n/2)*2+1;
+m=(n+1)/2;
+T=10; dazniu_slenkstis=m; amplitudes_slenkstis=0;
+dt=T/n;
+N=1000;
+dttt=T/N; ttt=-T:dttt:T; t=0:dt:T-dt;
+fff=funk(T,t);
+figure(1); hold on; plot(t,fff,'b-');
+ac0=dot(fff, fc(0,T,t))/n;
+for i=1:m-1
+    ac(i)=dot(fff,fc(i,T,t))*2/n;
+    as(i)=dot(fff,fs(
+end
+end
+
+function f=funk(T, t)
+f=sign(sin(2*pi*t/T))+sign(cos(2*pi*2*t/T))+sign(cos(2*pi*10*t/T));
+return
+end
+
+function c=fc(i, T, t)
+c=cos(2*pi*t*i/T);
+return
+end
+
+function c=fs(i, T, t)
+c=sin(2*pi*t*i/T);
+return
+end
