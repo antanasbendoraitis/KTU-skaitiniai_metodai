@@ -7,7 +7,7 @@ f=1./(1+5*x.^2);
 df=diff(f);
 np=7;
 xrange=[-pi, pi];
-x=xrange(1):(xrange(2)-xrange(1)/(np-1):xrange(2);
+x=xrange(1):(xrange(2)-xrange(1))/(np-1):xrange(2);
 Y=eval(subs(f, x, X));
 plot(X, Y, 'ro');
 DDF=splaino_koeficientai(X, Y, 1);

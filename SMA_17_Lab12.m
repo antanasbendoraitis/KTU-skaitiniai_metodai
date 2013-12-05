@@ -3,9 +3,9 @@ function main
 clc
 close all
 clear all
-n=1000; n=round(n/2)*2+1;
-m=(n+1)/2;
-T=10; dazniu_slenkstis=m; amplitudes_slenkstis=0;
+n=1000;
+m=200;
+T=4; dazniu_slenkstis=m; amplitudes_slenkstis=0;
 dt=T/n;
 N=1000;
 dttt=T/N; ttt=-T:dttt:T; t=0:dt:T-dt;
