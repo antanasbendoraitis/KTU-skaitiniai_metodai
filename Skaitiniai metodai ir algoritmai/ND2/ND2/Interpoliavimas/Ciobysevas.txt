@@ -1,0 +1,48 @@
+function Ciobysevas
+clc, clear all, close all
+    X = [-4.0 -3.2 -2.4 -1.6 -0.8 0 0.8 1.6 2.4 3.2 4.0]
+    Y = [0.74 1.28 0.59 -1.69 0.12 0.67 -0.17 -0.72 -0.44 0.05 1]
+n=length(X); %X ilgis
+T = zeros(n, n); %0 matrica ið n ilgio n plocio
+T(:,1) = 1; % T matricos pirmas stulpelis bus 1
+ 
+%Èiobyðevo daugianariø bazë
+for i=1:n
+    x=X(i);
+    T(i,2)=x;
+    for j=3:n
+        T(i,j)=2*x*T(i,j-1)-T(i,j-2);
+    end
+end
+T % isveda T matrica
+a=T\Y'; %gaunami interpoliuojancios funkcijos koeficientai 
+a=flipdim(a,1) % elementu sukeitimas vietomis (reverse)
+ 
+figure(1), hold on, grid on
+plot(X,Y,'ro') % braizomi duoti taskai
+xmin=min(X);xmax=max(X);  % min ir max reiksmes duotu x - intervalas
+N=n*10; % interpoliuojancios funkcijos tasku skaicius, kad gautume nekampuota grafika
+XC=[xmin:(xmax-xmin)/(N-1):xmax]; % apskaiciuojam tolygiai paskirstytas x reiksmes braizyti interpoliuojanciai funkcijai
+YC = klensou(a,XC); % apskaiciuoti interpoliuojancios f-jos Y reiksmes pagal xus ir koeficientus a
+ 
+plot(XC,YC,'b-'); %braizoma interpoliuojanti f-ja
+return
+end
+ 
+function px=klensou(a,x); % suranda interpoliuojancios f-jos ordinates
+% KLENSOU apskaiciuoja interpoliacinio polinomo, 
+% uzrasyto Ciobysovo polinomo bazeje, reiksme. 
+% ??jimo parametrai
+% a         - polinomo koeficientai, 
+% x         - argumento reik?mi? masyvas. 
+% I??jimo parametrai 
+% px        - polinomo reik?mi? masyvas.  
+n=numel(a); 
+bk2=0; bk1=0; 
+for k=1:n
+     bk=a(k)+2*x.*bk1-bk2; 
+    bk2=bk1; bk1=bk; 
+    end; 
+px=bk-x.*bk2;
+return
+end
